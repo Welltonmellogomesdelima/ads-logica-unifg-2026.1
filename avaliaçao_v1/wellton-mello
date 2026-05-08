@@ -1,83 +1,57 @@
+# funções
 
-#include <stdio.h>
+def somar(a, b):
+    return a + b
 
-// funções
-float somar(float a, float b) {
-    return a + b;
-}
+def subtrair(a, b):
+    return a - b
 
-float subtrair(float a, float b) {
-    return a - b;
-}
+def multiplicar(a, b):
+    return a * b
 
-float multiplicar(float a, float b) {
-    return a * b;
-}
+def dividir(a, b):
+    return a / b
 
-float dividir(float a, float b) {
-    return a / b;
-}
 
-int main() {
+opcao = -1
 
-    int opcao;
+# navegação em loop
+while opcao != 0:
 
-    do {
+    print("\n==== CALCULADORA ====")
+    print("1 - Somar")
+    print("2 - Subtrair")
+    print("3 - Multiplicar")
+    print("4 - Dividir")
+    print("0 - Sair")
 
-        printf("\n==== CALCULADORA ====\n");
-        printf("1 - Somar\n");
-        printf("2 - Subtrair\n");
-        printf("3 - Multiplicar\n");
-        printf("4 - Dividir\n");
-        printf("0 - Sair\n");
-        printf("Escolha: ");
+    # validação de entrada
+    opcao = int(input("Escolha: "))
 
-        scanf("%d", &opcao);
+    if opcao >= 1 and opcao <= 4:
 
-        if(opcao >= 1 && opcao <= 4) {
+        n1 = float(input("Digite o primeiro numero: "))
+        n2 = float(input("Digite o segundo numero: "))
 
-            float n1, n2;
+        if opcao == 1:
+            print("Resultado:", somar(n1, n2))
 
-            printf("Digite o primeiro numero: ");
-            scanf("%f", &n1);
+        elif opcao == 2:
+            print("Resultado:", subtrair(n1, n2))
 
-            printf("Digite o segundo numero: ");
-            scanf("%f", &n2);
+        elif opcao == 3:
+            print("Resultado:", multiplicar(n1, n2))
 
-            switch(opcao) {
+        elif opcao == 4:
 
-                case 1:
-                    printf("Resultado: %.2f\n", somar(n1, n2));
-                    break;
+            # validação divisão
+            if n2 == 0:
+                print("Erro: divisao por zero!")
 
-                case 2:
-                    printf("Resultado: %.2f\n", subtrair(n1, n2));
-                    break;
+            else:
+                print("Resultado:", dividir(n1, n2))
 
-                case 3:
-                    printf("Resultado: %.2f\n", multiplicar(n1, n2));
-                    break;
+    elif opcao != 0:
+        print("Opcao invalida!")
 
-                case 4:
-
-                    if(n2 == 0) {
-                        printf("Erro: divisao por zero!\n");
-                    } else {
-                        printf("Resultado: %.2f\n", dividir(n1, n2));
-                    }
-
-                    break;
-            }
-
-        } else if(opcao != 0) {
-
-            printf("Opcao invalida!\n");
-
-        }
-
-    } while(opcao != 0);
-
-    printf("Programa encerrado.\n");
-
-    return 0;
-}
+print("Programa encerrado.")
